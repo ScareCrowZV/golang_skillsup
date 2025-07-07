@@ -14,6 +14,14 @@ type Unit struct {
 	T     UnitType
 }
 
+func NewUnit(value float64, T UnitType) Unit {
+	unit := new(Unit)
+	unit.Value = value
+	unit.T = T
+
+	return *unit
+}
+
 func (u Unit) Get(t UnitType) float64 {
 
 	value := u.Value

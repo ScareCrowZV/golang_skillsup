@@ -37,7 +37,7 @@ func main() {
 		if auto == "BMW" {
 			for name, value := range dimensions {
 				if name == "length" {
-					unitLength = u.Unit{Value: value, T: u.CM}
+					unitLength = u.NewUnit(value, u.CM) //u.Unit{Value: value, T: u.CM}
 				}
 				if name == "width" {
 					unitWidth = u.Unit{Value: value, T: u.CM}
