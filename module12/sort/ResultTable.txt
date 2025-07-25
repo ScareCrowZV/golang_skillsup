@@ -1,0 +1,6 @@
+Алгоритм	n=10	n=1000	n=100000	Были ли затраты памяти?
+bubblesort	4347860 276.4 ns/op	2037 541403 ns/op	1 12292330200 ns/op	-
+selectionSort	4349822 277.9 ns/op	2194 515296 ns/op	1 4625647200 ns/op	-
+insertionSort	6409420 187.8 ns/op	8852 126620 ns/op	1 1163186200 ns/op	-
+mergeSort	977325 1057 ns/op	14289 83165 ns/op	88 13474247 ns/o	-
+quickSort	679396 1778 ns/op	4741 222830 ns/op	30 38009880 ns/op	-

@@ -1,0 +1,22 @@
+$ go test -bench=./...
+goos: windows
+goarch: amd64
+pkg: skillfactory/sort
+cpu: 11th Gen Intel(R) Core(TM) i5-11300H @ 3.10GHz
+BenchmarkBubbleSort/small_arrays-8               4347860               276.4 ns/op
+BenchmarkBubbleSort/middle_arrays-8                 2037            541403 ns/op
+BenchmarkBubbleSort/big_arrays-8                       1        12292330200 ns/op
+BenchmarkSelectionSort/small_arrays-8            4349822               277.9 ns/op
+BenchmarkSelectionSort/middle_arrays-8              2194            515296 ns/op
+BenchmarkSelectionSort/big_arrays-8                    1        4625647200 ns/op
+BenchmarkInsertionSort/small_arrays-8            6409420               187.8 ns/op
+BenchmarkInsertionSort/middle_arrays-8              8852            126620 ns/op
+BenchmarkInsertionSort/big_arrays-8                    1        1163186200 ns/op
+BenchmarkMergeSort/small_arrays-8                 977325              1057 ns/op
+BenchmarkMergeSort/middle_arrays-8                 14289             83165 ns/op
+BenchmarkMergeSort/big_arrays-8                       88          13474247 ns/op
+BenchmarkQuickSort/small_arrays-8                 679396              1778 ns/op
+BenchmarkQuickSort/middle_arrays-8                  4741            222830 ns/op
+BenchmarkQuickSort/big_arrays-8                       30          38009880 ns/op
+PASS
+ok      skillfactory/sort       525.400s
