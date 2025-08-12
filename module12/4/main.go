@@ -3,42 +3,55 @@ package main
 import (
 	"fmt"
 	"math/rand"
-	"time"
 )
 
-func init() {
-	(rand.NewSource(time.Now().UnixNano())) // необходимо для того, чтобы рандом был похож на рандомный
-}
-
 func main() {
-	ar := make([]int, 50)
+	ar := make([]int, 1000)
 	for i := range ar {
 		ar[i] = rand.Intn(200) - 100 // ограничиваем случайно значение от [-100;100]
 	}
 
+	fmt.Println(ar)
 	ar = mergeSort(ar)
 
 	fmt.Println(ar)
 }
 
-func mergeSort(ar []int) []int {
+func mergeSort(ar []int) (resultArr []int) {
+	var temporaryArr1 []int
+	var temporaryArr2 []int
 
-	divideAr := len(ar) / 2
-	firstAr := mergeSort(ar[:divideAr])
-	secondAr := mergeSort(ar[divideAr:])
+	if len(ar) > 2 {
+		middleElement := len(ar) / 2
+		temporaryArr1 = mergeSort(ar[middleElement:])
+		temporaryArr2 = mergeSort(ar[:middleElement])
 
-	var resultAr []int
-	for len(firstAr) > 0 && len(secondAr) > 0 {
-		if firstAr[0] <= secondAr[0] {
-			resultAr = append(resultAr, firstAr[0])
-			firstAr = firstAr[1:]
-		} else {
-			resultAr = append(resultAr, secondAr[0])
-			secondAr = secondAr[1:]
+		for len(temporaryArr1) > 0 && len(temporaryArr2) > 0 {
+			if temporaryArr1[0] > temporaryArr2[0] {
+				resultArr = append(resultArr, temporaryArr2[0])
+				temporaryArr2 = temporaryArr2[1:]
+			} else {
+				resultArr = append(resultArr, temporaryArr1[0])
+				temporaryArr1 = temporaryArr1[1:]
+			}
+
+		}
+
+		resultArr = append(resultArr, temporaryArr1...)
+		resultArr = append(resultArr, temporaryArr2...)
+	}
+
+	if len(ar) == 2 {
+		resultArr = append(resultArr, ar...)
+		if resultArr[0] > resultArr[1] {
+			resultArr[0], resultArr[1] = resultArr[1], resultArr[0]
 		}
 	}
-	resultAr = append(resultAr, firstAr...)
-	resultAr = append(resultAr, secondAr...)
 
-	return resultAr
+	if len(ar) == 1 {
+		resultArr = append(resultArr, ar[0])
+	}
+
+	fmt.Println("Результат прохода", resultArr)
+	return resultArr
 }

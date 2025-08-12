@@ -3,15 +3,17 @@ package main
 import (
 	"fmt"
 	"math/rand"
-	"time"
 )
-
-func init() {
-	(rand.NewSource(time.Now().UnixNano())) // необходимо для того, чтобы рандом был похож на рандомный
-}
 
 func main() {
 	ar := make([]int, 50)
+
+	// ar[0] = 2
+	// ar[1] = 1
+	// ar[2] = 3
+	// ar[3] = 4
+	// ar[4] = 5
+
 	for i := range ar {
 		ar[i] = rand.Intn(200) - 100 // ограничиваем случайно значение от [-100;100]
 	}
@@ -22,13 +24,14 @@ func main() {
 }
 
 func insertionSort(ar []int) {
+
 	for i := 1; i < len(ar); i++ {
-		insertionValue := ar[i]
-		j := i - 1
-		for j >= 0 && ar[j] > insertionValue {
-			ar[j+1] = ar[j]
-			j--
+		for j := range ar[:i] {
+			if ar[j] > ar[i] {
+				insertValue := ar[i]
+				ar[i] = ar[j]
+				ar[j] = insertValue
+			}
 		}
-		ar[j+1] = insertionValue
 	}
 }
