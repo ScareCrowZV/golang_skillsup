@@ -140,16 +140,16 @@ func dijeikstraAlgorithm(m [][]int, distanceArray [][]int, startNode int) {
 
 		}
 	}
-
-	fmt.Println(distance)
-	fmt.Println(visited)
-
+	fmt.Printf("Дистанция от узла #%d\n", startNode)
+	for i, v := range distance {
+		fmt.Printf("до #%d = %d\n", i, v)
+	}
 }
 
 func main() {
 
 	// Задаём количество узлов графа. Это же и будет размером матрицы смежности.
-	var graphSize int = 10
+	var graphSize int = 7
 
 	// Инициализируем матрицу смежности
 	var matrix = make([][]int, graphSize)
@@ -199,7 +199,7 @@ func main() {
 	// addEdgeUndirectedWithDistance(matrix, adjacencyArray, adjacencyDistance, 4, 6, 2)
 	// addEdgeUndirectedWithDistance(matrix, adjacencyArray, adjacencyDistance, 5, 6, 6)
 
-	// // Ориентированный граф из 10 элементов для проверки Дейкстры. Не забудьте изменить переменную graphSize на 10
+	// // Ориентированный граф из 10 элементов для проверки Дейкстры. Не забудьте изменить переменную graphSize на 7
 	addEdgeDirectedWithDistance(matrix, adjacencyArray, adjacencyDistance, 0, 1, 4)
 	addEdgeDirectedWithDistance(matrix, adjacencyArray, adjacencyDistance, 0, 2, 7)
 	addEdgeDirectedWithDistance(matrix, adjacencyArray, adjacencyDistance, 0, 3, 1)
@@ -222,5 +222,5 @@ func main() {
 	fmt.Println("Результат обхода в ширину:", v)
 
 	fmt.Println("Результат работы алгоритма Дейкстры")
-	dijeikstraAlgorithm(adjacencyArray, adjacencyDistance, 0)
+	dijeikstraAlgorithm(adjacencyArray, adjacencyDistance, 1)
 }
